@@ -928,45 +928,41 @@ async def keys2text(request: Request, client, ui, user_session, user_settings) -
 			yield f"Uvicorn: {uvv}\n"
 			yield f"\n--- AI Provider's SDK versions ---\n"
 			yield f"1. Anthropic: {anthropic_version}\n"
-			yield f"2. Google Generativeai: {genai_version}\n"
+			yield f"\t<small><a href=\"https://docs.anthropic.com/en/api/getting-started\" target=\"_blank\" style=\"color:green; TEXT-DECORATION: underline;\" title=\"see website\">https://docs.anthropic.com/en/api/getting-started</a></small>\n"
+			yield f"2. Google AI Studio: {genai_version}\n"
+			yield f"\t<small><a href=\"https://ai.google.dev/gemini-api/docs/api-key\" target=\"_blank\" style=\"color:green; TEXT-DECORATION: underline;\" title=\"see website\">https://ai.google.dev/gemini-api/docs/api-key</a></small>\n"
 			yield f"3. Groq: {groq_version}\n"
+			yield f"\t<small><a href=\"https://console.groq.com/login\" target=\"_blank\" style=\"color:green; TEXT-DECORATION: underline;\" title=\"see website\">https://console.groq.com/login</a></small>\n"
 			yield f"4. OpenAI: {openai_version}\n"
-			yield f"5. DuckDuckGo AI: ?\n"
-			# yield "\nSaved chat histories for this session:\n"
-			# if not user_settings.saved_chat_histories:
-			#   yield "nothing\n"
-			# else:
-			#   for chat in user_settings.saved_chat_histories:
-			#       yield f"{chat}\n"
+			yield f"\t<small><a href=\"https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key\" target=\"_blank\" style=\"color:green; TEXT-DECORATION: underline;\" title=\"see website\">https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key</a></small>\n"
+			yield f"5. OpenRouter: same as OpenAI SDK: {openai_version}\n"
+			yield f"\t<small><a href=\"https://openrouter.ai/docs/api-keys\" target=\"_blank\" style=\"color:green; TEXT-DECORATION: underline;\" title=\"see website\">https://openrouter.ai/docs/api-keys</a></small>\n"
+			yield f"6. DuckDuckGo AI: version is unknown\n"
+			yield f"\t<small>free and no API key needed; <a href=\"https://duckduckgo.com/aichat\" target=\"_blank\" style=\"color:green; TEXT-DECORATION: underline;\" title=\"see website\">https://duckduckgo.com/aichat</a></small>\n"
+			yield f" \n"
+			yield f"* notes:\n"
+			yield f"\t<small>- use the provided links to get your API keys</small>\n"
+			yield f"\t<small>- also, Google and Groq are free as of December 2024</small>\n"
+			yield f" \n"
 		else:
-			import random
-			import string
-			yield f"The following is a <i>all-in-one</i> README, wish list, and stream tester.\n\n"
-			yield f"I wish all of the AI chatters in the universe:\n\n"
-			yield f"- maintained a simple plain text chat history file, for both human and AI\n"
-			yield f"- denoted the ME: and the AI: in their chat history (ok, some of them do this already)\n"
-			yield f"- denoted which Provider and Model are being used, so we know who we chatted with\n"
-			yield f"- timestamped the chat with a human readable date and time\n"
-			yield f"- would allow us to 'Insert a Note' along with a timestamp into the chat history\n"
+			yield f"The following are wishes for all of the AI chatters in the universe:\n\n"
+			yield f"- maintain a simple plain text chat history file, for both human and AI\n"
+			yield f"- denote the ME: and the AI: in their chat history (ok, most of them do this already)\n"
+			yield f"- denote which Provider and Model are being used, so we know who/what we chatted with\n"
+			yield f"- timestamp the chat with a human readable date and time\n"
+			yield f"- allow us to 'Insert a Note' along with a timestamp into the chat history\n"
 			yield f"- were easy and fast to scroll chat history: ⬇ (to the bottom) and ⬆ (to the top)\n"
 			yield f"- could CLEAR to forget and start a new chat (ok, most do this already)\n"
 			yield f"- could COPY an entire chat to the clipboard\n"
-			yield f"- could SAVE an entire chat as a plain text file ... none of them; enough already with the JSON, Markdown, RTF, and Word\n"
+			yield f"- could SAVE an entire chat as a plain text file; DuckDuckGo AI is the only I have found to do this\n"
 			yield f"- would allow us to use our cursor/pointer to select text in this box to copy/paste just what you need  (ok, most of them do this already)\n"
 			yield f"- would remove those '**' (Markdown), this app removes most of the Markdown\n"
 			yield f"- could continue the same chat across several AI models\n"
 			yield f"- used NiceGUI and worked in many web browsers\n"
-			yield f"\nOk, now, the all 🌊 seems fine, let's test a stream of randomness:\n"
-			for i in range(10):
-				await asyncio.sleep(0.2)
-				random_word = "".join(
-					random.choices(string.ascii_lowercase, k=random.randint(1, 13))
-				)
-				yield f" A{random_word}E-{i+1} "  # either front/end space works
 			yield f" \n"
-			yield f"\nYou are 'go at throttle up' 🚀\n"
 			yield f"Enjoy! ☮️\n"
-			yield f"p.s. click on CLEAR above to get rid of this, I await your return! 🙉\n"
+			yield f"p.s. click on CLEAR button above to get rid of this, I await your return! 🙉\n"
+			yield f" \n"
 
 	# map the PROVIDERS to their corresponding streamer, so
 	# the 'async def' for each must be defined before here.
@@ -1165,6 +1161,7 @@ async def keys2text(request: Request, client, ui, user_session, user_settings) -
 			ui.notify("Prompt is empty, please type something.", position="top", timeout=2000)
 			return
 		if user_session.provider == 'Keys2Text':
+			# never put: Insert a Note, Vitals, ReadMe into the chat history
 			pass
 		else:
 			user_session.chat_history += user_prompt.value + " \n"
