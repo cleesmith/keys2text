@@ -18,7 +18,8 @@ from cryptography.fernet import Fernet
 class UserSettings:
 
 	def __init__(self):
-		self.app_version = "2024.12.1.0"
+		#                   year.mo.ver
+		self.app_version = "2025.01.1.0"
 		self.signin_time = 0
 		self.users_google_sub = None # important
 		self.path_to_settings = None # important

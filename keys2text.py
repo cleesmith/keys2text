@@ -921,7 +921,7 @@ async def keys2text(request: Request, client, ui, user_session, user_settings) -
 			groq_version = gv
 			openai_version = oav
 			yield f"\n\n--- Software Versions ---\n"
-			yield f"Keys2Text: {user_settings.app_version}\n"
+			yield f"Keys2Text: {user_session.app_version}\n"
 			yield f"Python: {python_version}\n"
 			yield f"NiceGUI: {nicegui_version}\n"
 			yield f"FastAPI: {fav}\n"
@@ -1361,7 +1361,7 @@ async def keys2text(request: Request, client, ui, user_session, user_settings) -
 						ui.image('https://www.slipthetrap.com/images/Aidetour_bw.png').classes('w-56')
 						ui.html(
 						  "<p style='font-size:20px'><b>Keys2Text</p>"
-						  f"<p style='font-size:12px'><b>version: {user_settings.app_version}</b></p>"
+						  f"<p style='font-size:12px'><b>version: {user_session.app_version}</b></p>"
 						  f"<p style='font-size:12px'><b>last Google sign in:<br>{datetime.utcfromtimestamp(signin_time).strftime('%Y-%m-%d %H:%M:%S')}</b></p><br>"
 						  f"<p style='font-size:10px; text-align: left;'><i>The 8 providers offered:<br>"
 						  f"{user_settings.eight_providers}</i></p>"
