@@ -3,7 +3,7 @@
 Keys2Text Chat is your personal AI interaction platform that brings multiple language models together in a single, streamlined interface. This application enables both online and offline AI engagement, designed to serve users across all experience levels.
 
 
-[![A quick look video of Keys2Text Chat](https://img.youtube.com/vi/jRNbUSk8iIA/0.jpg)](https://youtube.com/live/jRNbUSk8iIA?feature=share)
+[![A quick look video of Keys2Text Chat](https://img.youtube.com/vi/h1bOAffFNHY/0.jpg)](https://youtube.com/live/h1bOAffFNHY?feature=share)
 
 
 [sign in to Keys2Text Chat](https://keys2text-chat.onrender.com)

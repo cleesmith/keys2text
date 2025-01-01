@@ -8,6 +8,7 @@ import json
 class UserSession:
 
 	def __init__(self):
+		#                   year.mo.ver
 		self.app_version = "2025.01.1.0" # keep user_*'s up-to-date
 		# 14 days duration in seconds before refresh user's google SSO signin:
 		self.signin_timeout = 1209600 
