@@ -1,4 +1,4 @@
-# poetry run uvicorn main:app --workers 1 --host 127.0.0.1 --port 3000
+# uvicorn main:app --workers 1 --host 127.0.0.1 --port 3000
 # 
 # https://docs.render.com/deploy-fastapi
 #   https://keypoints-oc6g.onrender.com = BASE_URL
