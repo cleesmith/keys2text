@@ -9,3 +9,4 @@ anthropic==0.42.0
 groq==0.13.0
 fernet==1.0.1
 psutil==6.1.0
+cryptography==44.0.1
